@@ -8,7 +8,6 @@ import semver from 'semver';
 
 export default class BaseClient<Ready extends boolean = boolean> extends Client<Ready> {
 	public commands: Collection<string, Command>;
-	public aliases: Collection<string, string>;
 	public events: Collection<string, Event>;
 
 	public utils: Util;
@@ -34,7 +33,6 @@ export default class BaseClient<Ready extends boolean = boolean> extends Client<
 		this.validate(options);
 
 		this.commands = new Collection();
-		this.aliases = new Collection();
 		this.events = new Collection();
 
 		this.utils = new Util(this);
