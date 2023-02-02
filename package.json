@@ -7,7 +7,7 @@
     "lint": "eslint . --ext mjs,js,ts --fix",
     "build": "rimraf ./dist && swc ./src --out-dir ./dist --copy-files",
     "start": "node --no-warnings ./dist/index.js",
-    "register": "node ./scripts/register.mjs",
+    "register": "node ./dist/interactions/register.js",
     "update": "yarn upgrade-interactive"
   },
   "license": "GPL-3.0",

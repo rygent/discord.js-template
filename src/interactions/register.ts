@@ -13,24 +13,24 @@ program.option('-l, --local', 'register commands locally');
 
 program.parse(process.argv);
 
-const token = process.env.DISCORD_TOKEN;
+const token = process.env.DISCORD_TOKEN as string;
 if (!token) {
 	throw new Error('The DISCORD_TOKEN environment variable is required.');
 }
 
-const applicationId = process.env.DISCORD_APPLICATION_ID;
+const applicationId = process.env.DISCORD_APPLICATION_ID as string;
 if (!applicationId) {
 	throw new Error('The DISCORD_APPLICATION_ID environment variable is required.');
 }
 
-async function loadCommands() {
-	const main = fileURLToPath(new URL('../dist/index.js', import.meta.url));
+async function loadCommands(): Promise<object[]> {
+	const main = fileURLToPath(import.meta.url);
 	const directory = `${path.dirname(main) + path.sep}`.replace(/\\/g, '/');
 
-	const commands = [];
-	await globby(`${directory}interactions/**/*.js`).then(async interactions => {
+	const commands = [] as object[];
+	await globby(`${directory}**/*.js`).then(async (interactions: string[]) => {
 		for (const interactionFile of interactions) {
-			const { default: interaction } = await import(pathToFileURL(interactionFile));
+			const { default: interaction } = await import(pathToFileURL(interactionFile).toString());
 			commands.push(interaction);
 		}
 	});
@@ -38,8 +38,8 @@ async function loadCommands() {
 	return commands;
 }
 
-async function registerCommands(local = false) {
-	const guildId = process.env.DISCORD_GUILD_ID;
+async function registerCommands(local: boolean): Promise<void> {
+	const guildId = process.env.DISCORD_GUILD_ID as string;
 	if (!guildId && local) {
 		throw new Error('The DISCORD_GUILD_ID environment variable is required.');
 	}
@@ -60,12 +60,12 @@ async function registerCommands(local = false) {
 		}
 
 		console.log('Successfully reloaded application (/) commands.');
-	} catch (error) {
-		console.error(`${error.name}: ${error.message}`);
+	} catch (e: unknown) {
+		console.error(`${(e as Error).name}: ${(e as Error).message}`);
 	}
 }
 
 const options = program.opts();
+if (!options.global && !options.dev) console.log(program.helpInformation());
 if (options.global) await registerCommands(false);
 if (options.local) await registerCommands(true);
-else await registerCommands(false);
