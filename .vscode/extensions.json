@@ -2,7 +2,6 @@
   "recommendations": [
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
-    "mikestead.dotenv",
-    "prisma.prisma"
+    "mikestead.dotenv"
   ]
 }
