@@ -28,7 +28,7 @@ async function loadCommands(): Promise<object[]> {
 	const directory = `${path.dirname(main) + path.sep}`.replace(/\\/g, '/');
 
 	const commands = [] as object[];
-	await globby(`${directory}**/*.js`).then(async (interactions: string[]) => {
+	await globby(`${directory}?(context|slash)/**/*.js`).then(async (interactions: string[]) => {
 		for (const interactionFile of interactions) {
 			const { default: interaction } = await import(pathToFileURL(interactionFile).toString());
 			commands.push(interaction);
