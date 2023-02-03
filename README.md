@@ -1,6 +1,6 @@
 ## Getting Started
 ### Prerequisites
-- [Node.JS v16.9+](https://nodejs.org/en/download) or higher.
+- [Node.JS v16.14+](https://nodejs.org/en/download) or higher.
 - [Git v2.35+](https://git-scm.com/downloads) or higher.
 - [Yarn v1.22+](https://yarnpkg.com/en/docs/install) or higher. (Highly recommended)
 

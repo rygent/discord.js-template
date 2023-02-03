@@ -1,7 +1,8 @@
-import type BaseClient from '../../structures/BaseClient.js';
-import { Event } from '../../structures/Event.js';
+import type BaseClient from '../../lib/BaseClient.js';
+import Event from '../../lib/structures/Event.js';
+import type { DiscordAPIError } from '@discordjs/rest';
 import type { CommandInteraction, GuildMember } from 'discord.js';
-import { formatArray, formatPermissions } from '../../lib/utils/Function.js';
+import { formatArray, formatPermissions, resolveCommandName } from '../../lib/utils/Function.js';
 
 export default class extends Event {
 	public constructor(client: BaseClient) {
@@ -11,7 +12,7 @@ export default class extends Event {
 		});
 	}
 
-	public async run(interaction: CommandInteraction) {
+	public async run(interaction: CommandInteraction<'cached' | 'raw'>) {
 		if (!interaction.isChatInputCommand() && !interaction.isContextMenuCommand()) return;
 
 		const command = this.client.commands.get(resolveCommandName(interaction));
@@ -20,7 +21,7 @@ export default class extends Event {
 				return interaction.reply({ content: 'This command is currently inaccessible.', ephemeral: true });
 			}
 
-			if (command.guildOnly && !interaction.inGuild()) {
+			if (command.guildOnly && !interaction.inCachedGuild()) {
 				return interaction.reply({ content: 'This command cannot be used out of a server.', ephemeral: true });
 			}
 
@@ -62,8 +63,8 @@ export default class extends Event {
 
 			try {
 				await command.execute(interaction);
-			} catch (e) {
-				if ((e as Error).name === 'DiscordAPIError[10062]') return;
+			} catch (e: unknown) {
+				if ((e as DiscordAPIError).name === 'DiscordAPIError[10062]') return;
 				if (interaction.replied) return;
 				console.error(`${(e as Error).name}: ${(e as Error).message}`);
 
@@ -77,20 +78,4 @@ export default class extends Event {
 			}
 		}
 	}
-}
-
-function resolveCommandName(interaction: CommandInteraction): string {
-	if (!interaction.isChatInputCommand()) return interaction.commandName;
-
-	const topLevelCommand = interaction.commandName;
-	const subCommandGroup = interaction.options.getSubcommandGroup(false);
-	const subCommand = interaction.options.getSubcommand(false);
-
-	const command = [
-		topLevelCommand,
-		...(subCommandGroup ? [subCommandGroup] : []),
-		...(subCommand ? [subCommand] : [])
-	].join('-');
-
-	return command;
 }

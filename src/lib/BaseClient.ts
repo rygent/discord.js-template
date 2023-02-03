@@ -1,9 +1,9 @@
-import { BitField, Client, type If, PermissionsBitField, type PermissionsString } from 'discord.js';
-import { GatewayIntentBits } from 'discord-api-types/v10';
+import { BitField, Client, Partials, PermissionsBitField, PermissionsString } from 'discord.js';
+import { AllowedMentionsTypes, GatewayIntentBits } from 'discord-api-types/v10';
 import { Collection } from '@discordjs/collection';
-import type { Command } from './Command.js';
-import type { Event } from './Event.js';
-import Util from './Util.js';
+import type Command from './structures/Command.js';
+import type Event from './structures/Event.js';
+import Util from './structures/Util.js';
 import semver from 'semver';
 
 export default class BaseClient<Ready extends boolean = boolean> extends Client<Ready> {
@@ -12,10 +12,10 @@ export default class BaseClient<Ready extends boolean = boolean> extends Client<
 
 	public utils: Util;
 
-	declare public token: If<Ready, string, string | null>;
-	public debug: boolean | undefined;
+	public version!: string;
+	public debug!: boolean;
 	public owners: string[] | undefined;
-	public defaultPermissions: Readonly<BitField<any, any>> | undefined;
+	public defaultPermissions!: Readonly<BitField<PermissionsString, bigint>>;
 
 	public constructor(options: ClientOptions) {
 		super({
@@ -25,8 +25,15 @@ export default class BaseClient<Ready extends boolean = boolean> extends Client<
 				GatewayIntentBits.GuildMessages,
 				GatewayIntentBits.MessageContent
 			],
+			partials: [
+				Partials.Message,
+				Partials.Channel
+			],
 			allowedMentions: {
-				parse: ['users', 'roles'],
+				parse: [
+					AllowedMentionsTypes.User,
+					AllowedMentionsTypes.Role
+				],
 				repliedUser: false
 			}
 		});
@@ -40,7 +47,8 @@ export default class BaseClient<Ready extends boolean = boolean> extends Client<
 
 	private validate(options: ClientOptions) {
 		if (typeof options !== 'object') throw new TypeError('Options should be a type of Object.');
-		if (semver.lt(process.versions.node, '16.9.0')) throw new Error('This client requires Node.JS v16.9.0 or higher.');
+		if (semver.lt(process.versions.node, '16.14.0')) throw new Error('This client requires Node.JS v16.14.0 or higher.');
+		this.version = options.version;
 		this.debug = options.debug;
 
 		if (!options.token) throw new Error('You must pass the token for the Client.');
@@ -55,15 +63,16 @@ export default class BaseClient<Ready extends boolean = boolean> extends Client<
 		this.defaultPermissions = new PermissionsBitField(options.defaultPermissions).freeze();
 	}
 
-	public start(token = this.token) {
-		void this.utils.loadCommands();
-		void this.utils.loadEvents();
-		void super.login(token!);
+	public async start(token = this.token) {
+		await this.utils.loadCommands();
+		await this.utils.loadEvents();
+		void super.login(token as string);
 	}
 }
 
 interface ClientOptions {
 	token: any;
+	version: string;
 	owners: string[];
 	debug: boolean;
 	defaultPermissions: PermissionsString[];

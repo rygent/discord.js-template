@@ -1,8 +1,8 @@
-import type BaseClient from './BaseClient.js';
-import { Command } from './Command.js';
-import { Event } from './Event.js';
+import type BaseClient from '../BaseClient.js';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { globby } from 'globby';
+import Command from './Command.js';
+import Event from './Event.js';
 import path from 'node:path';
 
 export default class Util {
@@ -19,7 +19,7 @@ export default class Util {
 	}
 
 	private get directory(): string {
-		const main = fileURLToPath(new URL('../index.js', import.meta.url));
+		const main = fileURLToPath(new URL('../../index.js', import.meta.url));
 		return `${path.dirname(main) + path.sep}`.replace(/\\/g, '/');
 	}
 
@@ -31,7 +31,7 @@ export default class Util {
 				if (!this.isClass(File)) throw new TypeError(`Command ${name} doesn't export a class.`);
 				const command = new File(this.client, name.toLowerCase());
 				if (!(command instanceof Command)) throw new TypeError(`Command ${name} doesn't belong in commands directory.`);
-				this.client.commands.set(command.name.join('-'), command);
+				this.client.commands.set(command.name, command);
 			}
 		});
 	}

@@ -1,5 +1,5 @@
-import type BaseClient from '../structures/BaseClient.js';
-import { Event } from '../structures/Event.js';
+import type BaseClient from '../lib/BaseClient.js';
+import Event from '../lib/structures/Event.js';
 import { redBright, underline } from 'colorette';
 
 export default class extends Event {

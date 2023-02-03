@@ -1,10 +1,10 @@
-import type BaseClient from './BaseClient.js';
+import type BaseClient from '../BaseClient.js';
 import type { Client, ClientEvents } from 'discord.js';
 import type { RestEvents } from '@discordjs/rest';
 import type { Awaitable } from '@sapphire/utilities';
 import type { EventEmitter } from 'node:events';
 
-export abstract class Event {
+export default abstract class Event {
 	public client: BaseClient<true>;
 	public name: string;
 	public type: 'once' | 'on';
