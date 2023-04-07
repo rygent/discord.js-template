@@ -1,6 +1,7 @@
 import { BitField, Client, Partials, PermissionsBitField, type PermissionsString } from 'discord.js';
 import { AllowedMentionsTypes, GatewayIntentBits } from 'discord-api-types/v10';
 import { Collection } from '@discordjs/collection';
+import type { ClientOptions } from './types/Global.js';
 import type Command from './structures/Command.js';
 import type Event from './structures/Event.js';
 import Util from './structures/Util.js';
@@ -68,12 +69,4 @@ export default class BaseClient<Ready extends boolean = boolean> extends Client<
 		await this.utils.loadEvents();
 		void super.login(token as string);
 	}
-}
-
-interface ClientOptions {
-	token: any;
-	version: string;
-	owners: string[];
-	debug: boolean;
-	defaultPermissions: PermissionsString[];
 }

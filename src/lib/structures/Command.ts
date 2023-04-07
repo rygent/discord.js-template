@@ -1,5 +1,6 @@
 import type BaseClient from '../BaseClient.js';
 import { AutocompleteInteraction, BitField, CommandInteraction, PermissionsBitField, type PermissionsString } from 'discord.js';
+import type { InteractionCommandOptions } from '../types/Global.js';
 import type { Awaitable } from '@sapphire/utilities';
 
 export default abstract class Command {
@@ -31,15 +32,4 @@ export default abstract class Command {
 	public autocomplete(interaction: AutocompleteInteraction<'cached' | 'raw'>): Awaitable<unknown> {
 		throw new Error(`${this.name} doesn't provide a autocomplete method!`);
 	}
-}
-
-interface InteractionCommandOptions {
-	name: string;
-	description?: string;
-	memberPermissions?: PermissionsString[];
-	clientPermissions?: PermissionsString[];
-	disabled?: boolean;
-	context?: boolean;
-	guildOnly?: boolean;
-	ownerOnly?: boolean;
 }
