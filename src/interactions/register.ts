@@ -38,9 +38,12 @@ async function loadCommands(): Promise<object[]> {
 	return commands;
 }
 
-async function registerCommands(local: boolean): Promise<void> {
+async function registerCommands(): Promise<void> {
+	const options = program.opts();
+	if (!Object.keys(options).length) return console.log(program.helpInformation());
+
 	const guildId = process.env.DISCORD_GUILD_ID as string;
-	if (!guildId && local) {
+	if (!guildId && options.local) {
 		throw new Error('The DISCORD_GUILD_ID environment variable is required.');
 	}
 
@@ -50,13 +53,12 @@ async function registerCommands(local: boolean): Promise<void> {
 	try {
 		console.log('Started refreshing application (/) commands.');
 
-		switch (local) {
-			case true:
-				await rest.put(Routes.applicationGuildCommands(applicationId, guildId), { body: commands });
-				break;
-			case false:
-				await rest.put(Routes.applicationCommands(applicationId), { body: commands });
-				break;
+		if (options.global) {
+			await rest.put(Routes.applicationCommands(applicationId), { body: commands });
+		}
+
+		if (options.local) {
+			await rest.put(Routes.applicationGuildCommands(applicationId, guildId), { body: commands });
 		}
 
 		console.log('Successfully reloaded application (/) commands.');
@@ -65,7 +67,4 @@ async function registerCommands(local: boolean): Promise<void> {
 	}
 }
 
-const options = program.opts();
-if (!options.global && !options.dev) console.log(program.helpInformation());
-if (options.global) await registerCommands(false);
-if (options.local) await registerCommands(true);
+void registerCommands();
