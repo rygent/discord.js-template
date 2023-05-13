@@ -14,7 +14,7 @@
   "private": true,
   "dependencies": {
     "@sapphire/utilities": "^3.11.2",
-    "colorette": "^2.0.19",
+    "colorette": "^2.0.20",
     "discord.js": "^14.9.0",
     "dotenv": "^16.0.3",
     "globby": "^13.1.4"
