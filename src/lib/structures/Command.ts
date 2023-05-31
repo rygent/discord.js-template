@@ -1,5 +1,11 @@
 import type BaseClient from '../BaseClient.js';
-import { AutocompleteInteraction, BitField, CommandInteraction, PermissionsBitField, type PermissionsString } from 'discord.js';
+import {
+	AutocompleteInteraction,
+	BitField,
+	CommandInteraction,
+	PermissionsBitField,
+	type PermissionsString
+} from 'discord.js';
 import type { Awaitable } from '@discordjs/util';
 
 export default abstract class Command {

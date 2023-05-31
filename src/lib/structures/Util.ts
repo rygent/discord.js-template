@@ -13,9 +13,9 @@ export default class Util {
 	}
 
 	private isClass(input: unknown): boolean {
-		return typeof input === 'function' &&
-		typeof input.prototype === 'object' &&
-		input.toString().slice(0, 5) === 'class';
+		return (
+			typeof input === 'function' && typeof input.prototype === 'object' && input.toString().slice(0, 5) === 'class'
+		);
 	}
 
 	private get directory(): string {

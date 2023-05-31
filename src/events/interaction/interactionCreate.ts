@@ -31,11 +31,14 @@ export default class extends Event {
 					: this.client.defaultPermissions;
 
 				if (memberPermCheck) {
-					const missing = interaction.channel?.permissionsFor(interaction.member as GuildMember)
+					const missing = interaction.channel
+						?.permissionsFor(interaction.member as GuildMember)
 						?.missing(memberPermCheck) as string[];
 
 					if (missing.length) {
-						const replies = `You lack the ${formatArray(missing.map(item => `***${formatPermissions(item)}***`))} permission(s) to continue.`;
+						const replies = `You lack the ${formatArray(
+							missing.map((item) => `***${formatPermissions(item)}***`)
+						)} permission(s) to continue.`;
 
 						return interaction.reply({ content: replies, ephemeral: true });
 					}
@@ -46,11 +49,14 @@ export default class extends Event {
 					: this.client.defaultPermissions;
 
 				if (clientPermCheck) {
-					const missing = interaction.channel?.permissionsFor(interaction.guild!.members.me!)
+					const missing = interaction.channel
+						?.permissionsFor(interaction.guild!.members.me!)
 						?.missing(clientPermCheck) as string[];
 
 					if (missing.length) {
-						const replies = `I lack the ${formatArray(missing.map(item => `***${formatPermissions(item)}***`))} permission(s) to continue.`;
+						const replies = `I lack the ${formatArray(
+							missing.map((item) => `***${formatPermissions(item)}***`)
+						)} permission(s) to continue.`;
 
 						return interaction.reply({ content: replies, ephemeral: true });
 					}

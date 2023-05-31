@@ -21,18 +21,27 @@ export default class extends Command {
 
 		if (command) {
 			const cmd = this.client.commands.get(command);
-			const cmdId = app_command.find(item => item.name === cmd?.name.split(' ')[0])?.id;
+			const cmdId = app_command.find((item) => item.name === cmd?.name.split(' ')[0])?.id;
 
 			const permissions = cmd?.memberPermissions.toArray();
 
 			const embed = new EmbedBuilder()
 				.setAuthor({ name: `${this.client.user.username} | Help`, iconURL: this.client.user.displayAvatarURL() })
 				.setTitle(`${chatInputApplicationCommandMention(cmd!.name, cmdId!)}`)
-				.setDescription([
-					`${cmd?.description}`,
-					`${bold(italic('Permissions:'))} ${permissions?.length ? permissions.map(item => `\`${formatPermissions(item)}\``).join(', ') : 'No permission required.'}`
-				].join('\n'))
-				.setFooter({ text: `Powered by ${this.client.user.username}`, iconURL: interaction.user.avatarURL() as string });
+				.setDescription(
+					[
+						`${cmd?.description}`,
+						`${bold(italic('Permissions:'))} ${
+							permissions?.length
+								? permissions.map((item) => `\`${formatPermissions(item)}\``).join(', ')
+								: 'No permission required.'
+						}`
+					].join('\n')
+				)
+				.setFooter({
+					text: `Powered by ${this.client.user.username}`,
+					iconURL: interaction.user.avatarURL() as string
+				});
 
 			return interaction.reply({ embeds: [embed] });
 		}
@@ -41,43 +50,58 @@ export default class extends Command {
 		let i1 = 8;
 		let page = 1;
 
-		const commands = this.client.commands.filter(({ context, ownerOnly }) => !context && !ownerOnly)
-			.map(item => ({
-				id: app_command.find(i => i.name === item.name.split(' ')[0])?.id,
+		const commands = this.client.commands
+			.filter(({ context, ownerOnly }) => !context && !ownerOnly)
+			.map((item) => ({
+				id: app_command.find((i) => i.name === item.name.split(' ')[0])?.id,
 				...item
 			}));
 
-		const [firstId, previousId, pageId, nextId, lastId] = ['first', 'previous', 'page', 'next', 'last'].map(id => `${id}-${interaction.id}`);
+		const [firstId, previousId, pageId, nextId, lastId] = ['first', 'previous', 'page', 'next', 'last'].map(
+			(id) => `${id}-${interaction.id}`
+		);
 		const button = new ActionRowBuilder<ButtonBuilder>()
-			.addComponents(new ButtonBuilder()
-				.setCustomId(firstId as string)
-				.setStyle(ButtonStyle.Secondary)
-				.setEmoji(parseEmoji('⏪') as APIMessageComponentEmoji)
-				.setDisabled(true))
-			.addComponents(new ButtonBuilder()
-				.setCustomId(previousId as string)
-				.setStyle(ButtonStyle.Secondary)
-				.setEmoji(parseEmoji('◀️') as APIMessageComponentEmoji)
-				.setDisabled(true))
-			.addComponents(new ButtonBuilder()
-				.setCustomId(pageId as string)
-				.setStyle(ButtonStyle.Secondary)
-				.setLabel(`${page}/${Math.ceil(commands.length / 8)}`)
-				.setDisabled(true))
-			.addComponents(new ButtonBuilder()
-				.setCustomId(nextId as string)
-				.setStyle(ButtonStyle.Secondary)
-				.setEmoji(parseEmoji('▶️') as APIMessageComponentEmoji))
-			.addComponents(new ButtonBuilder()
-				.setCustomId(lastId as string)
-				.setStyle(ButtonStyle.Secondary)
-				.setEmoji(parseEmoji('⏩') as APIMessageComponentEmoji));
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId(firstId as string)
+					.setStyle(ButtonStyle.Secondary)
+					.setEmoji(parseEmoji('⏪') as APIMessageComponentEmoji)
+					.setDisabled(true)
+			)
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId(previousId as string)
+					.setStyle(ButtonStyle.Secondary)
+					.setEmoji(parseEmoji('◀️') as APIMessageComponentEmoji)
+					.setDisabled(true)
+			)
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId(pageId as string)
+					.setStyle(ButtonStyle.Secondary)
+					.setLabel(`${page}/${Math.ceil(commands.length / 8)}`)
+					.setDisabled(true)
+			)
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId(nextId as string)
+					.setStyle(ButtonStyle.Secondary)
+					.setEmoji(parseEmoji('▶️') as APIMessageComponentEmoji)
+			)
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId(lastId as string)
+					.setStyle(ButtonStyle.Secondary)
+					.setEmoji(parseEmoji('⏩') as APIMessageComponentEmoji)
+			);
 
 		const description = [
 			`Welcome to help menu, here is the list of commands!`,
-			commands.sort((a, b) => a.name.localeCompare(b.name))
-				.map(cmd => `${chatInputApplicationCommandMention(cmd.name, cmd.id!)}\n${quote(cmd.description)}`)
-				.slice(i0, i1).join('\n')
+			commands
+				.sort((a, b) => a.name.localeCompare(b.name))
+				.map((cmd) => `${chatInputApplicationCommandMention(cmd.name, cmd.id!)}\n${quote(cmd.description)}`)
+				.slice(i0, i1)
+				.join('\n')
 		];
 
 		if (commands.length <= 8) {
@@ -93,7 +117,11 @@ export default class extends Command {
 		const reply = await interaction.reply({ embeds: [embed], components: [button], fetchReply: true });
 
 		const filter = (i: ButtonInteraction) => i.user.id === interaction.user.id;
-		const collector = reply.createMessageComponentCollector({ filter, componentType: ComponentType.Button, time: 300_000 });
+		const collector = reply.createMessageComponentCollector({
+			filter,
+			componentType: ComponentType.Button,
+			time: 300_000
+		});
 
 		collector.on('ignore', (i) => void i.deferUpdate());
 		collector.on('collect', (i) => {
@@ -115,9 +143,15 @@ export default class extends Command {
 						button.components[4]?.setDisabled(false);
 					}
 
-					description.splice(1, description.length, commands.sort((a, b) => a.name.localeCompare(b.name))
-						.map(cmd => `${chatInputApplicationCommandMention(cmd.name, cmd.id!)}\n${quote(cmd.description)}`)
-						.slice(i0, i1).join('\n'));
+					description.splice(
+						1,
+						description.length,
+						commands
+							.sort((a, b) => a.name.localeCompare(b.name))
+							.map((cmd) => `${chatInputApplicationCommandMention(cmd.name, cmd.id!)}\n${quote(cmd.description)}`)
+							.slice(i0, i1)
+							.join('\n')
+					);
 
 					embed.setDescription(description.join('\n'));
 
@@ -139,9 +173,15 @@ export default class extends Command {
 						button.components[4]?.setDisabled(false);
 					}
 
-					description.splice(1, description.length, commands.sort((a, b) => a.name.localeCompare(b.name))
-						.map(cmd => `${chatInputApplicationCommandMention(cmd.name, cmd.id!)}\n${quote(cmd.description)}`)
-						.slice(i0, i1).join('\n'));
+					description.splice(
+						1,
+						description.length,
+						commands
+							.sort((a, b) => a.name.localeCompare(b.name))
+							.map((cmd) => `${chatInputApplicationCommandMention(cmd.name, cmd.id!)}\n${quote(cmd.description)}`)
+							.slice(i0, i1)
+							.join('\n')
+					);
 
 					embed.setDescription(description.join('\n'));
 
@@ -163,9 +203,15 @@ export default class extends Command {
 						button.components[4]?.setDisabled(true);
 					}
 
-					description.splice(1, description.length, commands.sort((a, b) => a.name.localeCompare(b.name))
-						.map(cmd => `${chatInputApplicationCommandMention(cmd.name, cmd.id!)}\n${quote(cmd.description)}`)
-						.slice(i0, i1).join('\n'));
+					description.splice(
+						1,
+						description.length,
+						commands
+							.sort((a, b) => a.name.localeCompare(b.name))
+							.map((cmd) => `${chatInputApplicationCommandMention(cmd.name, cmd.id!)}\n${quote(cmd.description)}`)
+							.slice(i0, i1)
+							.join('\n')
+					);
 
 					embed.setDescription(description.join('\n'));
 
@@ -187,9 +233,15 @@ export default class extends Command {
 						button.components[4]?.setDisabled(true);
 					}
 
-					description.splice(1, description.length, commands.sort((a, b) => a.name.localeCompare(b.name))
-						.map(cmd => `${chatInputApplicationCommandMention(cmd.name, cmd.id!)}\n${quote(cmd.description)}`)
-						.slice(i0, i1).join('\n'));
+					description.splice(
+						1,
+						description.length,
+						commands
+							.sort((a, b) => a.name.localeCompare(b.name))
+							.map((cmd) => `${chatInputApplicationCommandMention(cmd.name, cmd.id!)}\n${quote(cmd.description)}`)
+							.slice(i0, i1)
+							.join('\n')
+					);
 
 					embed.setDescription(description.join('\n'));
 
@@ -214,12 +266,14 @@ export default class extends Command {
 	public override autocomplete(interaction: AutocompleteInteraction<'cached' | 'raw'>) {
 		const focused = interaction.options.getFocused();
 
-		const choices = this.client.commands.filter(({ name }) => name.toLowerCase().includes(focused.toLowerCase()))
-			.map(commands => ({ ...commands }));
+		const choices = this.client.commands
+			.filter(({ name }) => name.toLowerCase().includes(focused.toLowerCase()))
+			.map((commands) => ({ ...commands }));
 
-		const respond = choices.sort((a, b) => a.name.localeCompare(b.name))
-			.filter(cmd => !cmd.context && !cmd.ownerOnly)
-			.filter(cmd => {
+		const respond = choices
+			.sort((a, b) => a.name.localeCompare(b.name))
+			.filter((cmd) => !cmd.context && !cmd.ownerOnly)
+			.filter((cmd) => {
 				if (cmd.guildOnly && !interaction.inCachedGuild()) return false;
 				return true;
 			})

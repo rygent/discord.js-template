@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
     "mikestead.dotenv"
   ]
