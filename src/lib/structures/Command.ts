@@ -1,6 +1,5 @@
 import type BaseClient from '../BaseClient.js';
 import { AutocompleteInteraction, BitField, CommandInteraction, PermissionsBitField, type PermissionsString } from 'discord.js';
-import type { InteractionCommandOptions } from '../types/Global.js';
 import type { Awaitable } from '@sapphire/utilities';
 
 export default abstract class Command {
@@ -14,7 +13,8 @@ export default abstract class Command {
 	public readonly guildOnly: boolean;
 	public readonly ownerOnly: boolean;
 
-	public constructor(client: BaseClient, options: InteractionCommandOptions) {
+	// eslint-disable-next-line no-undef
+	public constructor(client: BaseClient, options: CommandOptions) {
 		this.client = client;
 		this.name = options.name;
 		this.description = options.description ?? 'No description provided';
