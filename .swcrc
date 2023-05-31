@@ -9,7 +9,8 @@
     "parser": {
       "syntax": "typescript",
       "tsx": false,
-      "dts": false
+      "decorators": false,
+      "dynamicImport": false
     },
     "experimental": {
       "keepImportAssertions": true
