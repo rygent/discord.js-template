@@ -20,6 +20,10 @@
       "dependencyDashboardApproval": true
     },
     {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
       "matchPackagePatterns": ["*"],
       "semanticCommitType": "chore",
       "commitMessageAction": "Bump",
