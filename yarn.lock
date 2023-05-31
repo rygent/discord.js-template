@@ -220,13 +220,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/utilities@npm:^3.11.2":
-  version: 3.11.2
-  resolution: "@sapphire/utilities@npm:3.11.2"
-  checksum: af06b3f52156af397a3be564f992bedefd728ea2d44fee8ffdc00242de0454075e722091cc213d4ad2fb4ef5c3b78740bf5e7f75242851d31a56206f51a8f403
-  languageName: node
-  linkType: hard
-
 "@sindresorhus/is@npm:^4.0.0":
   version: 4.6.0
   resolution: "@sindresorhus/is@npm:4.6.0"
@@ -1037,7 +1030,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "discord.js-template@workspace:."
   dependencies:
-    "@sapphire/utilities": ^3.11.2
     "@swc/cli": ^0.1.62
     "@swc/core": ^1.3.57
     "@types/node": ^18.15.11
