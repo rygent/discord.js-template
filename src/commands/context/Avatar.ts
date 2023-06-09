@@ -1,5 +1,5 @@
-import type BaseClient from '../../lib/BaseClient.js';
-import Command from '../../lib/structures/Command.js';
+import type BaseClient from '#lib/BaseClient.js';
+import Command from '#lib/structures/Command.js';
 import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from '@discordjs/builders';
 import { ButtonStyle } from 'discord-api-types/v10';
 import type { ContextMenuCommandInteraction, GuildMember } from 'discord.js';
