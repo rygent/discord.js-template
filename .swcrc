@@ -21,7 +21,8 @@
       "#types/*": ["./src/types/*"]
     },
     "experimental": {
-      "keepImportAssertions": true
+      "keepImportAttributes": true,
+      "emitAssertForImportAttributes": true
     }
   },
   "exclude": ["^src/types/.*.ts$"]
