@@ -1,15 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":enableVulnerabilityAlerts"],
-  "labels": ["dependencies"],
+  "extends": ["config:base"],
+  "automerge": true,
   "lockFileMaintenance": {
-    "extends": [":dependencyDashboardApproval"],
     "enabled": true,
+    "dependencyDashboardApproval": true,
+    "schedule": ["before 6am on sunday"],
+    "automerge": false,
     "recreateClosed": true,
     "rebaseStalePrs": true,
     "branchTopic": "lock-file-maintenance",
     "commitMessageAction": "Lockfile maintenance",
-    "schedule": ["before 6am on sunday"],
     "prBodyDefinitions": {
       "Change": "All locks refreshed"
     }
@@ -17,19 +18,18 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
-      "dependencyDashboardApproval": true
-    },
-    {
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
+      "dependencyDashboardApproval": true,
+      "automerge": false
     },
     {
       "matchPackagePatterns": ["*"],
       "semanticCommitType": "chore",
       "commitMessageAction": "Bump",
+      "commitMessageExtra": "to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if newValue}}{{{prettyNewVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}",
       "commitMessageTopic": "{{depName}}",
       "rangeStrategy": "bump",
-      "recreateClosed": true
+      "recreateClosed": true,
+      "addLabels": ["dependencies"]
     },
     {
       "matchDepTypes": ["dependencies", "require"],
@@ -43,15 +43,16 @@
       "matchDepTypes": ["action"],
       "semanticCommitType": "ci",
       "semanticCommitScope": null,
-      "addLabels": ["ci"],
-      "automerge": true
+      "addLabels": ["ci"]
     }
   ],
   "prConcurrentLimit": 10,
   "prHourlyLimit": 5,
   "schedule": ["every weekend"],
   "vulnerabilityAlerts": {
+    "enabled": true,
     "schedule": ["at any time"],
+    "automerge": false,
     "addLabels": ["security"],
     "stabilityDays": 0,
     "rangeStrategy": "update-lockfile",
