@@ -31,7 +31,7 @@
     "eslint-formatter-pretty": "^5.0.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "^3.3.3",
+    "prettier": "^3.4.1",
     "rimraf": "^5.0.10",
     "semver": "^7.6.3",
     "typescript": "^5.4.5"
