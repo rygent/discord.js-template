@@ -33,7 +33,7 @@
     "eslint-plugin-prettier": "^5.2.3",
     "prettier": "^3.4.2",
     "rimraf": "^5.0.10",
-    "semver": "^7.6.3",
+    "semver": "^7.7.0",
     "typescript": "^5.4.5"
   },
   "optionalDependencies": {
