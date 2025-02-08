@@ -18,7 +18,7 @@
     "commander": "^11.1.0",
     "discord.js": "^14.13.0",
     "dotenv": "^16.4.7",
-    "globby": "^14.0.2"
+    "globby": "^14.1.0"
   },
   "devDependencies": {
     "@swc/cli": "^0.6.0",
