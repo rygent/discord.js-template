@@ -30,7 +30,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-formatter-pretty": "^5.0.0",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-prettier": "^5.4.1",
     "prettier": "^3.5.3",
     "rimraf": "^5.0.10",
     "semver": "^7.7.2",
