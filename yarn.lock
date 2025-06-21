@@ -1767,7 +1767,7 @@ __metadata:
     eslint-config-prettier: ^9.1.0
     eslint-formatter-pretty: ^5.0.0
     eslint-plugin-import: ^2.32.0
-    eslint-plugin-prettier: ^5.4.1
+    eslint-plugin-prettier: ^5.5.0
     globby: ^14.1.0
     prettier: ^3.5.3
     rimraf: ^5.0.10
@@ -2248,9 +2248,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:^5.4.1":
-  version: 5.4.1
-  resolution: "eslint-plugin-prettier@npm:5.4.1"
+"eslint-plugin-prettier@npm:^5.5.0":
+  version: 5.5.0
+  resolution: "eslint-plugin-prettier@npm:5.5.0"
   dependencies:
     prettier-linter-helpers: ^1.0.0
     synckit: ^0.11.7
@@ -2264,7 +2264,7 @@ __metadata:
       optional: true
     eslint-config-prettier:
       optional: true
-  checksum: ddbfc60e478dd78602b1f1594db539bfc686161eba4531e4c59580c9cf5746919878beabfe31b559d783ad3ed753af158bfa16bd35bd05382c7d2d86c894c81b
+  checksum: 63eab6adfa0cca78fafbc8482c2f04676dd3efc92b260b1abf15c63cd42a8a3207dc128a73694f177bec37a91a275976aa5fcb21676916dcb91cf49e9312d9a2
   languageName: node
   linkType: hard
 
