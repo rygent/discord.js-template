@@ -436,9 +436,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/cli@npm:^0.7.10":
-  version: 0.7.10
-  resolution: "@swc/cli@npm:0.7.10"
+"@swc/cli@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "@swc/cli@npm:0.8.0"
   dependencies:
     "@swc/counter": ^0.1.3
     "@xhmikosr/bin-wrapper": ^13.0.5
@@ -451,7 +451,7 @@ __metadata:
     tinyglobby: ^0.2.13
   peerDependencies:
     "@swc/core": ^1.2.66
-    chokidar: ^4.0.1
+    chokidar: ^5.0.0
   peerDependenciesMeta:
     chokidar:
       optional: true
@@ -459,7 +459,7 @@ __metadata:
     spack: bin/spack.js
     swc: bin/swc.js
     swcx: bin/swcx.js
-  checksum: fa7bfec21a049e8125c4dea8d45025031160ffbcf4532d46d4b9710f226cac201a2fd44e2e1ec985971de2a2f15c55565a0569a0e98dfe80221bf6ddeb110b3e
+  checksum: 577f7778d005777f23b6ed59c548f70324531930834609f264bc175d2431cc3b5769dce9a93af2554e16839675862f65e1e8fe056b393516487ae90eece60582
   languageName: node
   linkType: hard
 
@@ -1753,7 +1753,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "discord.js-template@workspace:."
   dependencies:
-    "@swc/cli": ^0.7.10
+    "@swc/cli": ^0.8.0
     "@swc/core": ^1.15.11
     "@types/node": ^20.19.32
     "@typescript-eslint/eslint-plugin": ^6.21.0
