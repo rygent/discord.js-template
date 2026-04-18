@@ -484,106 +484,106 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-arm64@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-darwin-arm64@npm:1.15.24"
+"@swc/core-darwin-arm64@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-darwin-arm64@npm:1.15.26"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-x64@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-darwin-x64@npm:1.15.24"
+"@swc/core-darwin-x64@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-darwin-x64@npm:1.15.26"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm-gnueabihf@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.15.24"
+"@swc/core-linux-arm-gnueabihf@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.15.26"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-gnu@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.15.24"
+"@swc/core-linux-arm64-gnu@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.15.26"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-musl@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-linux-arm64-musl@npm:1.15.24"
+"@swc/core-linux-arm64-musl@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-linux-arm64-musl@npm:1.15.26"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-linux-ppc64-gnu@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-linux-ppc64-gnu@npm:1.15.24"
+"@swc/core-linux-ppc64-gnu@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-linux-ppc64-gnu@npm:1.15.26"
   conditions: os=linux & cpu=ppc64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-s390x-gnu@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-linux-s390x-gnu@npm:1.15.24"
+"@swc/core-linux-s390x-gnu@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-linux-s390x-gnu@npm:1.15.26"
   conditions: os=linux & cpu=s390x & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-linux-x64-gnu@npm:1.15.24"
+"@swc/core-linux-x64-gnu@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-linux-x64-gnu@npm:1.15.26"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-musl@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-linux-x64-musl@npm:1.15.24"
+"@swc/core-linux-x64-musl@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-linux-x64-musl@npm:1.15.26"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-win32-arm64-msvc@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.15.24"
+"@swc/core-win32-arm64-msvc@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.15.26"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-win32-ia32-msvc@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.15.24"
+"@swc/core-win32-ia32-msvc@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.15.26"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@swc/core-win32-x64-msvc@npm:1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core-win32-x64-msvc@npm:1.15.24"
+"@swc/core-win32-x64-msvc@npm:1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core-win32-x64-msvc@npm:1.15.26"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core@npm:^1.15.24":
-  version: 1.15.24
-  resolution: "@swc/core@npm:1.15.24"
+"@swc/core@npm:^1.15.26":
+  version: 1.15.26
+  resolution: "@swc/core@npm:1.15.26"
   dependencies:
-    "@swc/core-darwin-arm64": 1.15.24
-    "@swc/core-darwin-x64": 1.15.24
-    "@swc/core-linux-arm-gnueabihf": 1.15.24
-    "@swc/core-linux-arm64-gnu": 1.15.24
-    "@swc/core-linux-arm64-musl": 1.15.24
-    "@swc/core-linux-ppc64-gnu": 1.15.24
-    "@swc/core-linux-s390x-gnu": 1.15.24
-    "@swc/core-linux-x64-gnu": 1.15.24
-    "@swc/core-linux-x64-musl": 1.15.24
-    "@swc/core-win32-arm64-msvc": 1.15.24
-    "@swc/core-win32-ia32-msvc": 1.15.24
-    "@swc/core-win32-x64-msvc": 1.15.24
+    "@swc/core-darwin-arm64": 1.15.26
+    "@swc/core-darwin-x64": 1.15.26
+    "@swc/core-linux-arm-gnueabihf": 1.15.26
+    "@swc/core-linux-arm64-gnu": 1.15.26
+    "@swc/core-linux-arm64-musl": 1.15.26
+    "@swc/core-linux-ppc64-gnu": 1.15.26
+    "@swc/core-linux-s390x-gnu": 1.15.26
+    "@swc/core-linux-x64-gnu": 1.15.26
+    "@swc/core-linux-x64-musl": 1.15.26
+    "@swc/core-win32-arm64-msvc": 1.15.26
+    "@swc/core-win32-ia32-msvc": 1.15.26
+    "@swc/core-win32-x64-msvc": 1.15.26
     "@swc/counter": ^0.1.3
     "@swc/types": ^0.1.26
   peerDependencies:
@@ -616,7 +616,7 @@ __metadata:
   peerDependenciesMeta:
     "@swc/helpers":
       optional: true
-  checksum: f3c2cf446132d2659101efa61a9c529b055e3834bf2316c9af0d986e56840360386b91dba661a1b0645d0dc6faa95793d05bd20e3ab893834183cf242f146c35
+  checksum: 702c5e93826d87a9b63dbd1ed3edb33c6c1c41bff6d162c8566b761aeb9da7002ccb209aefe1d76784681aa75b9652aec290356a6dbe1ccb2b143610d3541868
   languageName: node
   linkType: hard
 
@@ -1823,7 +1823,7 @@ __metadata:
   resolution: "discord.js-template@workspace:."
   dependencies:
     "@swc/cli": ^0.8.1
-    "@swc/core": ^1.15.24
+    "@swc/core": ^1.15.26
     "@types/node": ^20.19.39
     "@typescript-eslint/eslint-plugin": ^6.21.0
     "@typescript-eslint/parser": ^6.21.0
