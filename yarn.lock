@@ -1838,7 +1838,7 @@ __metadata:
     eslint-plugin-import: ^2.32.0
     eslint-plugin-prettier: ^5.5.6
     globby: ^14.1.0
-    prettier: ^3.9.8
+    prettier: ^3.9.9
     rimraf: ^5.0.10
     semver: ^7.8.5
     typescript: ^5.4.5
@@ -4695,12 +4695,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.9.8":
-  version: 3.9.8
-  resolution: "prettier@npm:3.9.8"
+"prettier@npm:^3.9.9":
+  version: 3.9.9
+  resolution: "prettier@npm:3.9.9"
   bin:
     prettier: bin/prettier.cjs
-  checksum: b9728106824ec6f36bf34533252b213f417b724b67947f97f77558c1edfa3e626fb813dfef306fca715e34f349f3d397dfd97fc02dcc50a10a06203211d2294f
+  checksum: fbd41978e758c07ce493728c73c9011400446281aca707024e58f7b6ea5ad1dd2f12f8cc51ff76ceb7c7749947db876f6074030a5ec333d8e4084c29455ea948
   languageName: node
   linkType: hard
 
