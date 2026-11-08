@@ -1391,13 +1391,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bufferutil@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "bufferutil@npm:4.1.0"
+"bufferutil@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "bufferutil@npm:4.2.0"
   dependencies:
     node-gyp: latest
     node-gyp-build: ^4.3.0
-  checksum: da46dc5c37ec2620b600ae4feec7a359d9a7e6bd4ecae8df691676461c151885e7d4bb992370a9885ec7e4a74b067e0bb819e1dcbfeea043507f15a5b40c1627
+  checksum: 9397ba1ea636e026399e21840e170ecc76e196131f5d3f67ccbdeab9405183395281515ca9eed63d965c2fc502494b40dbce9233bb050e0af5e1ff60a5cdfd4e
   languageName: node
   linkType: hard
 
@@ -1835,7 +1835,7 @@ __metadata:
     "@types/node": ^20.19.43
     "@typescript-eslint/eslint-plugin": ^6.21.0
     "@typescript-eslint/parser": ^6.21.0
-    bufferutil: ^4.1.0
+    bufferutil: ^4.2.0
     colorette: ^2.0.20
     commander: ^11.1.0
     discord.js: ^14.13.0
