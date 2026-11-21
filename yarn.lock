@@ -1850,7 +1850,7 @@ __metadata:
     rimraf: ^5.0.10
     semver: ^7.8.6
     typescript: ^5.4.5
-    utf-8-validate: ^6.0.6
+    utf-8-validate: ^6.1.0
   dependenciesMeta:
     bufferutil:
       optional: true
@@ -5979,13 +5979,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"utf-8-validate@npm:^6.0.6":
-  version: 6.0.6
-  resolution: "utf-8-validate@npm:6.0.6"
+"utf-8-validate@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "utf-8-validate@npm:6.1.0"
   dependencies:
     node-gyp: latest
     node-gyp-build: ^4.3.0
-  checksum: 7512b65141d7ca8435666d840f02293e246e504679c80920d27ccbb69f8ea0d28f8594da85480b177dcb3ef4b045eaa483af918c3804f20f0432ebd427f40f48
+  checksum: cfd9a598e6427eb16db5c49d90ed24fb037911db010ec3db69954867744a0c86977686c5fcfb4cc113f975381aabee94b187fd6a4aad0ecb0554fafdbe1c6627
   languageName: node
   linkType: hard
 
